@@ -16,6 +16,7 @@ embassy-stm32 = { version = "0.1.0", features = [ "defmt", "stm32f303cb", "unsta
 embassy-sync = { version = "0.5.0", features = ["defmt"] }
 embassy-time = { version = "0.3.0", features = ["defmt", "defmt-timestamp-uptime", "tick-hz-32_768"] }
 panic-probe = { version = "0.3.1", features = ["print-defmt"] }
+mpu-6500-async = { version = "0.1.0", git = "https://github.com/witek103/mpu-6500-rs.git" }
 
 [profile.release]
 debug = 2
