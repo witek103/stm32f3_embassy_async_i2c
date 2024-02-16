@@ -8,7 +8,7 @@ use embassy_stm32::gpio::{Input, Level, Output, Pull, Speed};
 use embassy_stm32::i2c::I2c;
 use embassy_stm32::time::Hertz;
 use embassy_stm32::{bind_interrupts, i2c, peripherals};
-use mpu_6500_async::{Mpu6500};
+use mpu_6500_async::{calibration, raw_data::RawData, Mpu6500};
 use {defmt_rtt as _, panic_probe as _};
 
 bind_interrupts!(struct Irqs {
@@ -42,9 +42,25 @@ async fn main(_spawner: Spawner) {
 
     info!("IMU detected");
 
+    let gyro_bias = if cfg!(feature = "calibrate-gyro") {
+        info!("Calculating gyro bias");
+        calibration::get_gyro_bias(&mut imu, &mut embassy_time::Delay)
+            .await
+            .unwrap()
+    } else {
+        info!("Using hardcoded gyro bias");
+        RawData::new(43, 41, 44)
+    };
+
     imu.init(&mut embassy_time::Delay).await.unwrap();
 
     info!("IMU initialized");
+
+    calibration::set_gyro_offset(&mut imu, gyro_bias)
+        .await
+        .unwrap();
+
+    info!("Gyro offsets set");
 
     imu.enable_data_ready_interrupt().await.unwrap();
 

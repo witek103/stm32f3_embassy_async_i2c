@@ -539,6 +539,7 @@ name = "mpu-6500-async"
 version = "0.1.0"
 source = "git+https://github.com/witek103/mpu-6500-rs.git#5531eb8f240c7c18975cf271f991b87d5a9fdf2b"
 dependencies = [
+ "defmt",
  "embedded-hal-async",
 ]
 
