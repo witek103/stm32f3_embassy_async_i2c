@@ -22,4 +22,8 @@ mpu-6500-async = { version = "0.1.0", git = "https://github.com/witek103/mpu-650
 calibrate-gyro = []
 
 [profile.release]
-debug = 2
+lto = true
+opt-level = "s"
+incremental = false
+codegen-units = 1
+debug = true
