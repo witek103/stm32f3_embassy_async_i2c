@@ -21,7 +21,7 @@ async fn main(_spawner: Spawner) {
     let p = embassy_stm32::init(Default::default());
 
     let mut led = Output::new(p.PC13, Level::High, Speed::Low);
-    let mut imu_interrupt = ExtiInput::new(Input::new(p.PB4, Pull::Up), p.EXTI4);
+    let mut imu_interrupt = ExtiInput::new(Input::new(p.PB3, Pull::Up), p.EXTI3);
 
     let i2c = I2c::new(
         p.I2C1,
