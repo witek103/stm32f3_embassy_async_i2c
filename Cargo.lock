@@ -723,6 +723,7 @@ dependencies = [
  "mpu-6500-async",
  "panic-probe",
  "static_cell",
+ "vl53l1x-async",
 ]
 
 [[package]]
@@ -790,6 +791,16 @@ name = "version_check"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49874b5167b65d7193b8aba1567f5c7d93d001cafc34600cee003eda787e483f"
+
+[[package]]
+name = "vl53l1x-async"
+version = "0.1.0"
+source = "git+https://github.com/witek103/vl53l1x-rs.git#afcf243d7d94c5a7fcf7e0b095e3512f693cd2e1"
+dependencies = [
+ "defmt",
+ "embedded-hal 1.0.0",
+ "embedded-hal-async",
+]
 
 [[package]]
 name = "void"

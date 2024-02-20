@@ -19,6 +19,7 @@ panic-probe = { version = "0.3.1", features = ["print-defmt"] }
 mpu-6500-async = { version = "0.1.0", git = "https://github.com/witek103/mpu-6500-rs.git", features = ["defmt"] }
 embassy-embedded-hal = "0.1.0"
 static_cell = "2.0.0"
+vl53l1x-async = { version = "0.1.0", git = "https://github.com/witek103/vl53l1x-rs.git", features = ["defmt"] }
 
 [features]
 calibrate-gyro = []
